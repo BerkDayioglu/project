@@ -1,0 +1,64 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.products-list {
+  @include flex(row, center, 2rem);
+  margin: 1rem;
+
+  .card {
+    width: 350px;
+    height: $cardHeight;
+    position: relative;
+    overflow: hidden;
+
+    .price {
+      border: 5px solid black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $cardBgColor;
+      color: $cardColor;
+      padding: $cardPadding;
+      font-size: 0.9rem;
+      border-radius: $borderRadius;
+      z-index: 2;
+    }
+
+    &_over {
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      bottom: 0;
+      background-color: $cardBgColor;
+      color: darken($cardColor, 50%);
+      font-size: 1.2rem;
+      padding: $cardPadding;
+      border-radius: $borderRadius;
+      transform: translateX(100%);
+      transition: all 1s;
+      height: 30%;
+      overflow: auto;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+    }
+
+    &:hover .card_over {
+      transform: translateX(0%);
+    //   display: block;
+    }
+
+    &:hover img{
+        filter: none;
+    }
+  }
+
+  img {
+    width: 100%;
+    overflow: hidden;
+    height: $cardHeight;
+    border-radius: $borderRadius;
+    filter: sepia(1);
+  }
+}
